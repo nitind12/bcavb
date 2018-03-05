@@ -13,7 +13,14 @@ class Web extends CI_Controller {
 		$this->load->view('login', $data);
 		$this->load->view('templates/footer');
 	}
+	function showuser(){
+		$this->load->model('my_model', 'mm');
+		$data['users'] = $this->mm->getusers();
 
+		$this->load->view('templates/header');
+		$this->load->view('showusers', $data);
+		$this->load->view('templates/footer');
+	}
 	function authenticate(){
 		$this->load->model('my_model', 'mm');
 		$result = $this->mm->check();
